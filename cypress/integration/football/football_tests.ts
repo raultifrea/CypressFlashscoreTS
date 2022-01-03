@@ -1,16 +1,12 @@
-import { CricketPage } from "../pages/cricket_page";
-import { FootballPage } from "../pages/football/football_page";
-import { LeaguePage } from "../pages/football/league_page";
-import { TeamPage } from "../pages/football/team_page";
-import { TennisPage } from "../pages/tennis_page";
-import { Actions } from "../pages/utils/actions";
-import { Verifications } from "../pages/utils/verifications";
+import { FootballPage } from "../../pages/football/football_page";
+import { LeaguePage } from "../../pages/football/league_page";
+import { TeamPage } from "../../pages/football/team_page";
+import { Actions } from "../../pages/utils/actions";
+import { Verifications } from "../../pages/utils/verifications";
 
 const football_page = new FootballPage()
-const cricket_page = new CricketPage()
 const verifications = new Verifications()
 const actions = new Actions()
-const tennis_page = new TennisPage()
 const league_page = new LeaguePage()
 const team_page = new TeamPage()
 
@@ -109,47 +105,3 @@ describe('Football tests', function(){
     })
 
     })
-
-describe('Other sports tests', ()=>{
-
-    it('select tennis tab', function(){
-        actions.select_tab('Tenis');
-        verifications.verify_url("https://www.flashscore.ro/tenis/");
-        verifications.verify_tab_selected('Tenis');
-        verifications.verify_color_of_header(tennis_page.tennis_header_primary_colour);
-    })
-
-    it('verify names of my tennis leagues', ()=>{
-        actions.select_tab('Tenis');
-        tennis_page.verify_my_leagues_titles();
-    })
-
-    it('verify my tennis teams entry', ()=>{
-        actions.select_tab("Tenis");
-        verifications.verify_my_teams_entry();
-    })
-
-    it('select Crichet tab', ()=> {
-        let name = 'Crichet'
-        actions.open_other_sports_menu();
-        actions.select_other_sport(name);
-        verifications.verify_url("https://www.flashscore.ro/crichet/");
-        verifications.verify_page_is_loaded(name);
-        verifications.verify_color_of_header(cricket_page.cricket_header_primary_color);
-    })
-})
-
-describe("General tests", ()=>{
-
-    it('verify top ad content', ()=>{
-        verifications.verify_ad_display();
-    })
-    
-    it('check day theme', ()=>{
-        verifications.verify_day_mode();
-    })
-    
-    it('check night theme', ()=>{
-        verifications.verify_night_mode();
-    })
-})
