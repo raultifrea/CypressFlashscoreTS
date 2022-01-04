@@ -10,7 +10,7 @@ pipeline {
         stage('Run tests') {
             steps {
                 echo 'Running tests'
-                bat 'npx cypress run --spec "cypress/integration/football/*"'
+                bat 'npx cypress run --spec .\cypress\integration\football\*"'
             }
         }
     }
