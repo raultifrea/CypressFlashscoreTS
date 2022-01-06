@@ -7,6 +7,11 @@ pipeline {
                 echo 'Hello World'
             }
         }
+        stage('Install dependencies') {
+            steps {
+               bat 'npm install typescript'
+            }
+        }
         stage('Run tests') {
             steps {
                 echo 'Running tests'
