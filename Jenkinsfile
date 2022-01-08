@@ -4,13 +4,16 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
+               echo 'Installing Typescript'
                bat 'npm install typescript'
             }
         }
         stage('Run tests') {
             steps {
                 echo 'Running tests'
-                bat 'npx cypress run --spec .\\cypress\\integration\\${TESTS}'
+                script {
+                    bat 'npx cypress run --spec .\\cypress\\integration\\${TESTS}'
+                }
             }
         }
     }
