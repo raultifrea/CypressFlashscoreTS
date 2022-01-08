@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo 'Running tests'
                 script {
-                    bat 'npx cypress run --spec .\\cypress\\integration\\${TESTS}'
+                    bat 'npx cypress run --spec .\\cypress\\integration\\login\\${TESTS}'
                 }
             }
         }
