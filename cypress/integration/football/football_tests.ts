@@ -23,7 +23,7 @@ describe('Football tests', function(){
         verifications.verify_color_of_header(football_page.football_header_primary_colour);
     })
 
-    it.only('verify names of my football leagues', ()=>{
+    it('verify names of my football leagues', ()=>{
         actions.select_tab('Fotbal');
         football_page.verify_my_leagues_titles();
     })
