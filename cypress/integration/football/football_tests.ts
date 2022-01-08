@@ -23,7 +23,7 @@ describe('Football tests', function(){
         verifications.verify_color_of_header(football_page.football_header_primary_colour);
     })
 
-    it('verify names of my football leagues', ()=>{
+    it.only('verify names of my football leagues', ()=>{
         actions.select_tab('Fotbal');
         football_page.verify_my_leagues_titles();
     })
@@ -34,53 +34,54 @@ describe('Football tests', function(){
     })
 
     it('select England Premier League', ()=>{
+        let premier_league = 'Premier League'
         actions.select_tab('Fotbal');
-        football_page.select_england_premier_league();
+        football_page.select_league_from_my_leagues(premier_league);
         verifications.verify_url('https://www.flashscore.ro/fotbal/anglia/premier-league/');
-        verifications.verify_header_name('Premier League');
+        verifications.verify_header_name(premier_league);
     })
     
-    it('select Algeria Divizia 1', ()=>{
+    it('select given country and league', ()=>{
+        let league = 'Super League'
         actions.select_tab('Fotbal');
-        football_page.select_algeria_divizia_1();
-        verifications.verify_url('https://www.flashscore.ro/fotbal/algeria/divizia-1/');
-        verifications.verify_header_name('Divizia 1');
+        football_page.select_league_from_all_leagues('Elveţia', league);
+        verifications.verify_header_name(league);
     })
     
-    it('select first England Premier League match of today', ()=>{
-        actions.select_tab('Fotbal');
-        football_page.select_england_premier_league();
-        league_page.select_first_match();
-    })
+    // it('select first England Premier League match of today', ()=>{
+    //     actions.select_tab('Fotbal');
+    //     football_page.select_england_premier_league();
+    //     league_page.select_first_match();
+    // })
 
     it('select first England Premier League result', ()=>{
         actions.select_tab('Fotbal');
-        football_page.select_england_premier_league();
+        football_page.select_league_from_my_leagues('Premier League');
         league_page.select_first_result();
     })
 
     it('select first England Premier League fixture', ()=>{
         actions.select_tab('Fotbal');
-        football_page.select_england_premier_league();
+        football_page.select_league_from_my_leagues('Premier League');
         league_page.select_first_fixture();
     })
 
     it('select first position England Premier League team', ()=>{
         actions.select_tab('Fotbal');
-        football_page.select_england_premier_league();
+        football_page.select_league_from_my_leagues('Premier League');
         league_page.select_standings_leader();
     })
 
     it('select last position England Premier League team', ()=>{
         actions.select_tab('Fotbal');
-        football_page.select_england_premier_league();
+        football_page.select_league_from_my_leagues('Premier League');
         league_page.select_standings_red_lantern();
     })
 
     it('select England Premier League team by name', ()=>{
         let name = 'Arsenal'
         actions.select_tab('Fotbal');
-        football_page.select_england_premier_league();
+        football_page.select_league_from_my_leagues('Premier League');
         league_page.select_team_by_name(name);
         verifications.verify_url_content(name);
         verifications.verify_header_name(name);
@@ -89,7 +90,7 @@ describe('Football tests', function(){
     it('get team streak counter', ()=>{
         let name = 'Arsenal';
         actions.select_tab('Fotbal');
-        football_page.select_england_premier_league();
+        football_page.select_league_from_my_leagues('Premier League');
         league_page.select_team_by_name(name);
         verifications.verify_header_name(name);
         team_page.get_win_result_record();
@@ -98,7 +99,7 @@ describe('Football tests', function(){
     it('results value verification', ()=>{
         let name = 'Chelsea';
         actions.select_tab('Fotbal');
-        football_page.select_england_premier_league();
+        football_page.select_league_from_my_leagues('Premier League');
         league_page.select_team_by_name(name);
         verifications.verify_header_name(name);
         team_page.verify_result_values();

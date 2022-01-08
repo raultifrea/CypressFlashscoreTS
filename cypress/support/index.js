@@ -19,4 +19,9 @@ import './commands'
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 require('cypress-xpath')
+Cypress.on('uncaught:exception',(err, runnable)=>{
+    if (err.message.includes("reading 'classList'")){
+        return false
+    }
+})
 

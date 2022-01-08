@@ -1,6 +1,8 @@
 export class FootballPage{
 
     my_leagues_locator = '#my-leagues-list'
+    all_leagues_locator = '#category-left-menu'
+    all_league_more_button_locator = ".lmc__itemMore"
     football_header_primary_colour = 'rgb(8, 95, 0)'
     england_locator = "[title='Anglia']"
     algeria_locator = "[title='Algeria']"
@@ -50,21 +52,24 @@ export class FootballPage{
             expect($league.eq(5)).to.contain("Liga 2");
             expect($league.eq(6)).to.contain("Cupa");
             expect($league.eq(7)).to.contain("LaLiga");
-            expect($league.eq(8)).to.contain("Euro");
-            expect($league.eq(9)).to.contain("Liga Campionilor");
-            expect($league.eq(10)).to.contain("Europa League");
-            expect($league.eq(11)).to.contain("Europa Conference League");
-            expect($league.eq(12)).to.contain("UEFA Nations League");
-            expect($league.eq(13)).to.contain("Cupa Mondială");
+            expect($league.eq(8)).to.contain("Africa Cupa Naţiunilor")
+            expect($league.eq(9)).to.contain("Euro");
+            expect($league.eq(10)).to.contain("Liga Campionilor");
+            expect($league.eq(11)).to.contain("Europa League");
+            expect($league.eq(12)).to.contain("Europa Conference League");
+            expect($league.eq(13)).to.contain("UEFA Nations League");
+            expect($league.eq(14)).to.contain("Cupa Mondială");
         })
     }
 
-    select_england_premier_league(){
-        cy.get(this.england_locator).find(this.england_premier_league_locator).click();
+    select_league_from_my_leagues(league: string){
+        cy.get(this.my_leagues_locator).contains(league).click();
     }
-
-    select_algeria_divizia_1(){
-        cy.get(this.algeria_locator).find(this.algeria_divizia_1_locator).click();
+   
+    select_league_from_all_leagues(country: string, league: string){
+        cy.get(this.all_league_more_button_locator).click();
+        cy.get(this.all_leagues_locator).contains(country).click();
+        cy.get(this.all_leagues_locator).contains(league).click();
     }
 
 }
