@@ -1,5 +1,3 @@
-import { use } from "chai";
-import { isTypedArray } from "cypress/types/lodash";
 import { FootballPage } from "../../pages/football/football_page"
 import { Actions } from "../../pages/utils/actions"
 
