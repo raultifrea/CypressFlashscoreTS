@@ -7,6 +7,8 @@
 node_modules/
 dist/
 cypress/results/
+cypress/screenshots/
+cypress/videos/
 
 # Compiled Java class files
 *.class

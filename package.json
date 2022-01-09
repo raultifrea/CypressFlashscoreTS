@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "report:merge": "mochawesome-merge --reportDir cypress/results/json > cypress/results/mochawesome-bundle.json",
-    "report:generate": "marge cypress/results/json/mochawesome.json -o cypress/reports/html"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -17,10 +15,6 @@
   },
   "devDependencies": {
     "cypress-multi-reporters": "^1.5.0",
-    "cypress-xpath": "^1.6.2",
-    "mocha": "^9.1.3",
-    "mochawesome": "^7.0.1",
-    "mochawesome-merge": "^4.2.1",
-    "mochawesome-report-generator": "^6.0.1"
+    "cypress-xpath": "^1.6.2"
   }
 }
