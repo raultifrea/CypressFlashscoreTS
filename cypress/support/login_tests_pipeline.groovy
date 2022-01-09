@@ -18,5 +18,11 @@ pipeline {
                 }
             }
         }
+        stage('Generate report') {
+            steps {
+               echo 'Generating allure report'
+               bat 'allure serve .\\cypress\\results\\'
+            }
+        }
     }
 }
