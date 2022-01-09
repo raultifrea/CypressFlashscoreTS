@@ -8,6 +8,7 @@ pipeline {
             steps {
                echo 'Installing Typescript'
                bat 'npm install typescript'
+               echo 'Installing Allure'
                bat 'npm i -D @shelex/cypress-allure-plugin'
             }
         }
@@ -19,11 +20,12 @@ pipeline {
                 }
             }
         }
-        stage('Generate report') {
-            steps {
-               echo 'Generating allure report'
-               bat 'allure serve .\\cypress\\results\\'
-            }
+    }
+    post {
+        always {
+            print('Generating Results')
+            allure results: [[path: '.\\cypress\\results\\']] 
         }
     }
+
 }
