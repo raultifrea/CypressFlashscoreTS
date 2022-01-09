@@ -8,6 +8,7 @@ pipeline {
             steps {
                echo 'Installing Typescript'
                bat 'npm install typescript'
+               bat 'npm i -D @shelex/cypress-allure-plugin'
             }
         }
         stage('Run tests') {
