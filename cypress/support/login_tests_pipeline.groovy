@@ -22,7 +22,7 @@ pipeline {
     post {
         always {
             print('Generating Results')
-            allure results: [[path: './cypress/results']] 
+            allure results: [[path: 'allure-results']] 
         }
     }
 
