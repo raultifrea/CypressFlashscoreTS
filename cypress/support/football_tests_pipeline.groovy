@@ -21,4 +21,11 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            print('Generating Results')
+            allure results: [[path: 'allure-results']] 
+        }
+    }
+
 }
