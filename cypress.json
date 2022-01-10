@@ -1,6 +1,6 @@
 {
     "env":{
-      "allure": "false",
-      "allureResultsPath": "./cypress/results"
+      "allure": "true",
+      "allureResultsPath": "allure-results"
     }
   }
