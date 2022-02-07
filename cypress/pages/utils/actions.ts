@@ -1,7 +1,3 @@
-import { FootballPage } from "../football/football_page"
-
-const football_page = new FootballPage()
-
 export class Actions{
 
     tab_list_locator = "//a[contains(@class,'menuTop__item')]"
