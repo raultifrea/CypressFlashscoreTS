@@ -6,24 +6,27 @@ const footbal_page = new FootballPage();
 
 describe("Login using HTML UI", ()=>{
 
-    const email = 'raoul_tifrea@yahoo.com'
-    const password = 'Flashscore123'
-
     beforeEach(()=>{
         actions.navigate("https://www.flashscore.ro/");
         actions.accept_disclaimer();
     })
 
     it("successful login UI", ()=>{
-        footbal_page.login_successful_ui(email, password);
+        cy.fixture('users').then((users)=>{
+            footbal_page.login_successful_ui(users.email, users.password);
+        })
     })
 
     it("failed login UI", ()=>{
-        footbal_page.login_failed_ui(email, "password");
+        cy.fixture('users').then((users)=>{
+            footbal_page.login_failed_ui(users.email, "password");
+        })
     })
 
     it("logout UI", ()=>{
-        footbal_page.login_successful_ui(email, password);
+        cy.fixture('users').then((users)=>{
+            footbal_page.login_successful_ui(users.email, users.password);
+        })
         footbal_page.logout();
     })
 })

@@ -8,20 +8,18 @@ export class FootballPage{
     algeria_locator = "[title='Algeria']"
     england_premier_league_locator = "[title='Premier League']"
     algeria_divizia_1_locator = "[title='Divizia 1']"
-    login_panel_locator = '#lsid'
-    signin_button_locator = '#signIn'
+    login_panel_locator = '#user-menu'
     login_window_locator = '#lsid-window'
-    email_field_locator = '.email-form-element'
-    password_field_locator = '.password-form-element'
-    login_logout_prompt_locator = '.registration'
-    login_button_locator = '#login'
+    email_field_locator = '#email'
+    password_field_locator = '#passwd'
+    login_logout_prompt_locator = '.message'
+    login_button_locator = '.loginWindow__button--login'
     login_error_locator = '.err-msg-wrapper'
     logout_button_locator = '#lsid-sign-out'
 
     login_successful_ui(email: string, password: string){
         this.login_method(email, password)
         cy.get(this.login_logout_prompt_locator).contains('Autentificare cu succes.');
-        cy.get(this.signin_button_locator).should('not.exist');
     }
 
     login_failed_ui(email: string, password: string){
@@ -31,15 +29,14 @@ export class FootballPage{
 
     logout(){
         cy.get(this.login_panel_locator).click()
-        .find(this.logout_button_locator).click();
-
+        cy.get(this.logout_button_locator).click();
     }
 
     login_method(email: string, password: string){
-        cy.get(this.login_panel_locator).find(this.signin_button_locator).click();
-        cy.get(this.login_window_locator).find(this.email_field_locator).type(email);
-        cy.get(this.login_window_locator).find(this.password_field_locator).type(password);
-        cy.get(this.login_window_locator).find(this.login_button_locator).click();
+        cy.get(this.login_panel_locator).click();
+        cy.get(this.email_field_locator).type(email);
+        cy.get(this.password_field_locator).type(password);
+        cy.get(this.login_button_locator).click();
     }
 
     verify_my_leagues_titles(){
