@@ -7,8 +7,8 @@ const footbal_page = new FootballPage();
 describe("Login using HTML UI", ()=>{
 
     beforeEach(()=>{
-        actions.navigate("https://www.flashscore.ro/");
-        actions.accept_disclaimer();
+        cy.navigate("https://www.flashscore.ro/");
+        cy.acceptDisclaimer();
     })
 
     it("successful login UI", ()=>{

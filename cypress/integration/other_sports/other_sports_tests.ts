@@ -10,20 +10,26 @@ const cricket_page = new CricketPage();
 
 describe('Other sports tests', ()=>{
 
+    beforeEach(()=>{
+        cy.navigate("https://www.flashscore.ro/");
+        cy.acceptDisclaimer();
+    })
+
     it('select tennis tab', function(){
-        actions.select_tab('Tenis');
+        cy.selectTab('Tenis');
         verifications.verify_url("https://www.flashscore.ro/tenis/");
         verifications.verify_tab_selected('Tenis');
-        verifications.verify_color_of_header(tennis_page.tennis_header_primary_colour);
+        // verifications.verify_color_of_header(tennis_page.tennis_header_primary_colour);
+
     })
 
     it('verify names of my tennis leagues', ()=>{
-        actions.select_tab('Tenis');
+        cy.selectTab('Tenis');
         tennis_page.verify_my_leagues_titles();
     })
 
     it('verify my tennis teams entry', ()=>{
-        actions.select_tab("Tenis");
+        cy.selectTab('Tenis');
         verifications.verify_my_teams_entry();
     })
 
@@ -33,6 +39,6 @@ describe('Other sports tests', ()=>{
         actions.select_other_sport(name);
         verifications.verify_url("https://www.flashscore.ro/crichet/");
         verifications.verify_page_is_loaded(name);
-        verifications.verify_color_of_header(cricket_page.cricket_header_primary_color);
+        // verifications.verify_color_of_header(cricket_page.cricket_header_primary_color);
     })
 })
